@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class UserController extends ApiController
+class AuthController extends ApiController
 {
     public function login(Request $request, HttpClientInterface $client)
     {
