@@ -12,7 +12,7 @@ class UserController extends ApiController
         $request = $this->transformJsonBody($request);
         $password = $request->get('password');
         $email = $request->get('email');
-        $url = $_ENV['DATA_URL'] . "login";
+        $url = $_ENV['AUTH_URL'] . "login";
         $response = $client->request(
             'POST',
             $url,
@@ -32,7 +32,7 @@ class UserController extends ApiController
         if (empty($password) || empty($email)) {
             return $this->respondValidationError("Invalid Password or Email");
         }
-        $url = $_ENV['DATA_URL'] . "register";
+        $url = $_ENV['AUTH_URL'] . "register";
         $response = $client->request(
             'POST',
             $url,
