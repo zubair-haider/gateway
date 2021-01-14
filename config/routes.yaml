@@ -8,3 +8,23 @@ api_user_login:
   path: /login
   controller: App\Controller\AuthController::login
   methods: POST
+
+api_user_create:
+  path:       /api/user
+  controller: App\Controller\UserController::createUser
+  methods:    POST
+
+api_user_show:
+  path:       /api/user/{id}
+  controller: App\Controller\UserController::showUser
+  methods:    GET
+
+api_user_update:
+  path:       /api/user/{id}
+  controller: App\Controller\UserController::updateUser
+  methods:    PUT
+
+api_user_delete:
+  path:       /api/user/{id}
+  controller: App\Controller\UserController::deleteUser
+  methods:    DELETE
