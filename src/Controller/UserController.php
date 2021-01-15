@@ -100,6 +100,7 @@ class UserController extends ApiController
     public function createUser(Request $request, HttpClientInterface $client)
     {
         try {
+            $token = $request->headers->get('Authorization');
             $request = $this->transformJsonBody($request);
             $password = $request->get('password');
             $email = $request->get('email');
@@ -113,7 +114,6 @@ class UserController extends ApiController
                 'roles' => $roles,
             ];
             $url = $_ENV['AUTH_URL'] . "api/user";
-            $token = $request->headers->get('Authorization');
             $response = $client->request('POST', $url, ['headers' => [
                 'Authorization' => $token,
             ], 'json' => $data]);
