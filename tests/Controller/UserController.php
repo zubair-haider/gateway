@@ -1,11 +1,24 @@
 <?php
 namespace App\Tests\Controller;
 
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class PostControllerTest extends WebTestCase
+class UserControllerTest extends WebTestCase
 {
+    public function testRegisterUser()
+    {
+        $client = static::createClient();
+        $client->request(
+            'POST',
+            '/register',
+            [],
+            [],
+            [],
+            '{"email":"test4@test.com","password":"test"}'
+        );
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+
     public function testLoginUser()
     {
         $client = static::createClient();
@@ -14,7 +27,7 @@ class PostControllerTest extends WebTestCase
             '/login',
             [],
             [],
-            ['CONTENT_TYPE' => 'application/json'],
+            [],
             '{"email":"test2@test.com","password":"test"}'
         );
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
