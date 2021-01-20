@@ -21,8 +21,8 @@ class AuthController extends ApiController
                     'json' => ['email' => $email, "password" => $password],
                 ]
             );
-            $data = $response->toArray();
-            return $this->respondWithSuccess($data['success']);
+            $data = $response->toArray()['success'];
+            return $this->respondWithSuccess($data);
         } catch (\Exception $e) {
             return $this->respondValidationError($e->getMessage());
         }
